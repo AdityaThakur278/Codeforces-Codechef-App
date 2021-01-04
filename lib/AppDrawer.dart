@@ -29,7 +29,6 @@ class _AppDrawerState extends State<AppDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      key: _scaffoldKey,
       child: Column(
         children: <Widget>[
           SizedBox(
@@ -67,31 +66,44 @@ class _AppDrawerState extends State<AppDrawer> {
               if (handle != null) {
                 prefs.remove('codeforces_handle');
                 codeforces_login = false;
-                Navigator.pop(_scaffoldKey.currentContext);
+                Navigator.pop(context);
                 // Get.off(MyApp());
-                Alert(
-                  image: Image.asset(
-                    'images/logout.jpg',
-                    height: 150.0,
-                  ),
-                  context: scaffoldKey.currentContext,
-                  title: "Logged Out Successfully",
-                  desc: "Reload pages to see changes",
-                  buttons: [],
-                ).show();
+                // Alert(
+                //   image: Image.asset(
+                //     'images/logout.jpg',
+                //     height: 150.0,
+                //   ),
+                //   context: scaffoldKey.currentContext,
+                //   title: "Logged Out Successfully",
+                //   desc: "Reload pages to see changes",
+                //   buttons: [],
+                // ).show();
+                setState(() {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => MyApp()));
+                  // (context as Element).reassemble();
+                });
               } else {
-                Navigator.pop(_scaffoldKey.currentContext);
+                Navigator.pop(context);
                 // Get.off(MyApp());
-                Alert(
-                  image: Image.asset(
-                    'images/logout.jpg',
-                    height: 150.0,
-                  ),
-                  context: scaffoldKey.currentContext,
-                  title: "Already Logged out",
-                  desc: "Reload pages to see changes",
-                  buttons: [],
-                ).show();
+                // Alert(
+                //   image: Image.asset(
+                //     'images/logout.jpg',
+                //     height: 150.0,
+                //   ),
+                //   title: "Already Logged out",
+                //   desc: "Reload pages to see changes",
+                //   buttons: [],
+                // ).show();
+                setState(() {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => MyApp()));
+                  // (context as Element).reassemble();
+                });
               }
             },
           ), //d
@@ -105,31 +117,45 @@ class _AppDrawerState extends State<AppDrawer> {
               if (handle != null) {
                 prefs.remove('codechef_handle');
                 codechef_login = false;
-                Navigator.pop(_scaffoldKey.currentContext);
+                Navigator.pop(context);
                 // Get.off(MyApp());
-                Alert(
-                  image: Image.asset(
-                    'images/logout.jpg',
-                    height: 150.0,
-                  ),
-                  context: scaffoldKey.currentContext,
-                  title: "Logged Out Successfully",
-                  desc: "Reload pages to see changes",
-                  buttons: [],
-                ).show();
+                // Alert(
+                //   image: Image.asset(
+                //     'images/logout.jpg',
+                //     height: 150.0,
+                //   ),
+                //   context: scaffoldKey.currentContext,
+                //   title: "Logged Out Successfully",
+                //   desc: "Reload pages to see changes",
+                //   buttons: [],
+                // ).show();
+                setState(() {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => MyApp()));
+                  // (context as Element).reassemble();
+                });
               } else {
-                Navigator.pop(_scaffoldKey.currentContext);
+                Navigator.pop(context);
                 // Get.off(MyApp());
-                Alert(
-                  image: Image.asset(
-                    'images/logout.jpg',
-                    height: 150.0,
-                  ),
-                  context: scaffoldKey.currentContext,
-                  title: "Already Logged out",
-                  desc: "Reload pages to see changes",
-                  buttons: [],
-                ).show();
+                // Alert(
+                //   image: Image.asset(
+                //     'images/logout.jpg',
+                //     height: 150.0,
+                //   ),
+                //   context: scaffoldKey.currentContext,
+                //   title: "Already Logged out",
+                //   desc: "Reload pages to see changes",
+                //   buttons: [],
+                // ).show();
+                setState(() {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => MyApp()));
+                  // (context as Element).reassemble();
+                });
               }
             },
           ), // rawer stuffs
