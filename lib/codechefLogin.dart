@@ -81,7 +81,8 @@ class _CodechefLoginState extends State<CodechefLogin> {
             height: 150.0,
             color: color3,
           ),
-          context: scaffoldKey.currentContext,
+          // context: scaffoldKey.currentContext,
+          context: context,
           title: "Invalid handle!!",
           desc: "Enter Valid Handle",
           // desc: "Enter Proper Handle",
@@ -158,7 +159,7 @@ class _CodechefLoginState extends State<CodechefLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
+      // key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: color3,
         // you can put Icon as well, it accepts any widget.

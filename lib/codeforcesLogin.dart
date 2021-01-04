@@ -81,7 +81,7 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
             height: 150.0,
             color: color3,
           ),
-          context: scaffoldKey.currentContext,
+          context: context,
           title: "Invalid handle!!",
           desc: "Enter Valid Handle",
           buttons: [],
@@ -157,7 +157,7 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
+      // key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: color3,
         // you can put Icon as well, it accepts any widget.

@@ -18,14 +18,6 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  void temp() {
-    MyApp myAppObj = new MyApp();
-    Navigator.pushReplacement(
-      _scaffoldKey.currentContext,
-      MaterialPageRoute(builder: (context) => myAppObj),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -66,6 +58,7 @@ class _AppDrawerState extends State<AppDrawer> {
               if (handle != null) {
                 prefs.remove('codeforces_handle');
                 codeforces_login = false;
+                codeforcesPage = true;
                 Navigator.pop(context);
                 // Get.off(MyApp());
                 // Alert(
@@ -87,6 +80,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 });
               } else {
                 Navigator.pop(context);
+                codeforcesPage = true;
                 // Get.off(MyApp());
                 // Alert(
                 //   image: Image.asset(
@@ -117,6 +111,7 @@ class _AppDrawerState extends State<AppDrawer> {
               if (handle != null) {
                 prefs.remove('codechef_handle');
                 codechef_login = false;
+                codeforcesPage = false;
                 Navigator.pop(context);
                 // Get.off(MyApp());
                 // Alert(
@@ -138,6 +133,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 });
               } else {
                 Navigator.pop(context);
+                codeforcesPage = false;
                 // Get.off(MyApp());
                 // Alert(
                 //   image: Image.asset(
