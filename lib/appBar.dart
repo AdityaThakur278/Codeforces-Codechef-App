@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 
+// bool codeforcesPage = true;
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 AppBar retAppBar() {
   if (selected_index == 0) {
     return AppBar(
       backgroundColor: color3,
-      title: Text('User Profile'),
+      // you can put Icon as well, it accepts any widget.
+      title: Text("Profile"),
+      actions: <Widget>[
+        Container(
+          padding: EdgeInsets.only(left: 10.0, right: 5.0),
+          child: IconButton(
+            icon: Image.asset(
+              'images/codeforces1.png',
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          ),
+        ),
+        Container(
+            padding: EdgeInsets.only(left: 5.0, right: 10.0),
+            child: IconButton(
+                icon: Image.asset(
+                  'images/codechef1.png',
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  MyApp();
+                })),
+      ],
     );
   } else if (selected_index == 1) {
     return AppBar(
