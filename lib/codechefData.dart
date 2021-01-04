@@ -1,3 +1,4 @@
+import 'package:codeforces_codechef/AppDrawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -121,6 +122,7 @@ class _CodechefDataState extends State<CodechefData> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: func1(),
+      drawer: AppDrawer(),
     );
   }
 }

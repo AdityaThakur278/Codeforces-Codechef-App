@@ -59,27 +59,80 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           ListTile(
             leading: Icon(Icons.assignment_return),
-            title: Text('Log Out'),
+            title: Text('Codeforces Logout'),
             onTap: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.remove('codeforces_handle');
-              prefs.remove('codechef_handle');
-              codeforces_login = false;
-              codechef_login = false;
-              Navigator.pop(context);
-              // Get.off(MyApp());
-              Alert(
-                image: Image.asset(
-                  'images/logout.jpg',
-                  height: 150.0,
-                ),
-                context: scaffoldKey.currentContext,
-                title: "Logged Out Successfully",
-                desc: "Reload pages to see changes",
-                buttons: [],
-              ).show();
+              var handle = prefs.getString('codeforces_handle');
+
+              if (handle != null) {
+                prefs.remove('codeforces_handle');
+                codeforces_login = false;
+                Navigator.pop(_scaffoldKey.currentContext);
+                // Get.off(MyApp());
+                Alert(
+                  image: Image.asset(
+                    'images/logout.jpg',
+                    height: 150.0,
+                  ),
+                  context: scaffoldKey.currentContext,
+                  title: "Logged Out Successfully",
+                  desc: "Reload pages to see changes",
+                  buttons: [],
+                ).show();
+              } else {
+                Navigator.pop(_scaffoldKey.currentContext);
+                // Get.off(MyApp());
+                Alert(
+                  image: Image.asset(
+                    'images/logout.jpg',
+                    height: 150.0,
+                  ),
+                  context: scaffoldKey.currentContext,
+                  title: "Already Logged out",
+                  desc: "Reload pages to see changes",
+                  buttons: [],
+                ).show();
+              }
             },
-          ), //drawer stuffs
+          ), //d
+          ListTile(
+            leading: Icon(Icons.assignment_return),
+            title: Text('Codechef Logout'),
+            onTap: () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              var handle = prefs.getString('codechef_handle');
+
+              if (handle != null) {
+                prefs.remove('codechef_handle');
+                codechef_login = false;
+                Navigator.pop(_scaffoldKey.currentContext);
+                // Get.off(MyApp());
+                Alert(
+                  image: Image.asset(
+                    'images/logout.jpg',
+                    height: 150.0,
+                  ),
+                  context: scaffoldKey.currentContext,
+                  title: "Logged Out Successfully",
+                  desc: "Reload pages to see changes",
+                  buttons: [],
+                ).show();
+              } else {
+                Navigator.pop(_scaffoldKey.currentContext);
+                // Get.off(MyApp());
+                Alert(
+                  image: Image.asset(
+                    'images/logout.jpg',
+                    height: 150.0,
+                  ),
+                  context: scaffoldKey.currentContext,
+                  title: "Already Logged out",
+                  desc: "Reload pages to see changes",
+                  buttons: [],
+                ).show();
+              }
+            },
+          ), // rawer stuffs
         ],
       ),
     );

@@ -172,7 +172,9 @@ class _CodechefLoginState extends State<CodechefLogin> {
                 color: Colors.white,
               ),
               onPressed: () {
+                // setState(() {
                 codeforcesPage = true;
+                // });
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -190,7 +192,10 @@ class _CodechefLoginState extends State<CodechefLogin> {
                     color: Colors.white,
                   ),
                   onPressed: () {
+                    // setState(() {
                     codeforcesPage = false;
+                    // });
+
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(

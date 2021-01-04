@@ -171,7 +171,10 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
                 color: Colors.white,
               ),
               onPressed: () {
+                // setState(() {
                 codeforcesPage = true;
+                // });
+
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -189,7 +192,9 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
                   color: Colors.white,
                 ),
                 onPressed: () {
+                  // setState(() {
                   codeforcesPage = false;
+                  // });
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(

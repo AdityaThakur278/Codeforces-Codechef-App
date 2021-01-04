@@ -1,3 +1,4 @@
+import 'package:codeforces_codechef/AppDrawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -67,7 +68,7 @@ class _CodeforcesDataState extends State<CodeforcesData> {
     setFutureUserInfo(fetchAlbum());
   }
 
-  Widget func1() {
+  Widget func11() {
     // print('Data');
     return Center(
       child: Column(
@@ -120,7 +121,8 @@ class _CodeforcesDataState extends State<CodeforcesData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: func1(),
+      body: func11(),
+      drawer: AppDrawer(),
     );
   }
 }
