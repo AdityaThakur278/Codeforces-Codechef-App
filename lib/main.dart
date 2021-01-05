@@ -1,6 +1,6 @@
 import 'package:codeforces_codechef/AppDrawer.dart';
 import 'package:codeforces_codechef/appBar.dart';
-import 'package:codeforces_codechef/codechefLogin.dart';
+import 'package:codeforces_codechef/login/codechefLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'func2.dart';
@@ -8,7 +8,7 @@ import 'func3.dart';
 import 'func4.dart';
 import 'func5.dart';
 import 'appBar.dart';
-import 'codeforcesLogin.dart';
+import 'package:codeforces_codechef/login/codeforcesLogin.dart';
 import 'package:get/get.dart';
 
 bool codeforces_login;
@@ -17,8 +17,8 @@ bool codechef_login;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.remove('codeforces_handle');
-  prefs.remove('codechef_handle');
+  // prefs.remove('codeforces_handle');
+  // prefs.remove('codechef_handle');
 
   var codeforces_handle = prefs.getString('codeforces_handle');
   var codechef_handle = prefs.getString('codechef_handle');

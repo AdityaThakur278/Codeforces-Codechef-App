@@ -1,8 +1,8 @@
 import 'package:codeforces_codechef/AppDrawer.dart';
-import 'package:codeforces_codechef/codeforcesData.dart';
+import 'package:codeforces_codechef/profile/codeforcesData.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:codeforces_codechef/main.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
 
