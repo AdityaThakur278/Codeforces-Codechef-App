@@ -1,9 +1,12 @@
 import 'package:codeforces_codechef/AppDrawer.dart';
+import 'package:codeforces_codechef/Upcoming/upcoming.dart';
 import 'package:codeforces_codechef/appBar.dart';
 import 'package:codeforces_codechef/login/codechefLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:codeforces_codechef/Submissions/submissions.dart';
+import 'package:codeforces_codechef/Problems/problemsCF.dart';
+import 'package:codeforces_codechef/Upcoming/upcoming.dart';
 import 'func2.dart';
 import 'func3.dart';
 import 'func4.dart';
@@ -52,10 +55,10 @@ class MyApp extends StatelessWidget {
 
 codeforcesLogin func1_obj = codeforcesLogin();
 CodechefLogin func11_obj = CodechefLogin();
-Func2 func2_obj = Func2();
+Upcoming func2_obj = Upcoming();
 Func3 func3_obj = Func3();
 Submissions func4_obj = Submissions();
-Func5 func5_obj = Func5();
+ProblemsCF func5_obj = ProblemsCF();
 
 bool codeforcesPage = true;
 
@@ -84,10 +87,10 @@ class MyAppState extends State<Application> {
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[
       codeforcesPageState(),
-      func2_obj.func2(),
+      func2_obj,
       func3_obj.func3(),
       func4_obj,
-      func5_obj.func5(),
+      func5_obj,
     ];
 
     return WillPopScope(

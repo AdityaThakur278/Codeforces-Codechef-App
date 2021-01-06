@@ -44,7 +44,7 @@ class _AppDrawerState extends State<AppDrawer> {
             leading: Icon(Icons.assignment_return),
             title: Text('Codeforces Logout'),
             onTap: () async {
-              selected_index = 0;
+              // selected_index = 0;
               SharedPreferences prefs = await SharedPreferences.getInstance();
               var handle = prefs.getString('codeforces_handle');
               prefs.remove('codeforces_handle');
@@ -60,7 +60,7 @@ class _AppDrawerState extends State<AppDrawer> {
             leading: Icon(Icons.assignment_return),
             title: Text('Codechef Logout'),
             onTap: () async {
-              selected_index = 0;
+              // selected_index = 0;
               SharedPreferences prefs = await SharedPreferences.getInstance();
               var handle = prefs.getString('codechef_handle');
               prefs.remove('codechef_handle');

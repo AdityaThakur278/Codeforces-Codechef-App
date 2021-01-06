@@ -20,12 +20,12 @@ class _SubmissionsState extends State<Submissions> {
       if (codeforces_login == true) {
         return CF_submissions();
       } else {
-        selected_index = 0;
         codeforcesPage = true;
         return Center(
           child: FlatButton(
             color: color3,
             onPressed: () {
+              selected_index = 0;
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
@@ -36,7 +36,8 @@ class _SubmissionsState extends State<Submissions> {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
-                "Please Login \n Click Here!",
+                "Login to see\nCodeforces submissions\n\nClick Here!!",
+                textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
             ),
@@ -47,12 +48,12 @@ class _SubmissionsState extends State<Submissions> {
       if (codechef_login == true) {
         return CC_submissions();
       } else {
-        selected_index = 0;
         codeforcesPage = false;
         return Center(
           child: FlatButton(
             color: color3,
             onPressed: () {
+              selected_index = 0;
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
@@ -63,7 +64,8 @@ class _SubmissionsState extends State<Submissions> {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
-                "Please Login \n Click Here!",
+                "Login to see\nCodechef submissions\n\nClick Here!!",
+                textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white, fontSize: 20.0),
               ),
             ),

@@ -8,6 +8,6 @@ class CC_submissions extends StatefulWidget {
 class _CC_submissionsState extends State<CC_submissions> {
   @override
   Widget build(BuildContext context) {
-    return Text("CC Submissions");
+    return Center(child: Text("Data Not available"));
   }
 }
