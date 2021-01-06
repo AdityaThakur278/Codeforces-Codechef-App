@@ -122,10 +122,13 @@ class _CodechefDataState extends State<CodechefData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          UserInfoCC(),
-        ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            UserInfoCC(),
+          ],
+        ),
       ),
       drawer: AppDrawer(),
     );

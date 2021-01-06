@@ -3,6 +3,7 @@ import 'package:codeforces_codechef/appBar.dart';
 import 'package:codeforces_codechef/login/codechefLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:codeforces_codechef/Submissions/submissions.dart';
 import 'func2.dart';
 import 'func3.dart';
 import 'func4.dart';
@@ -53,7 +54,7 @@ codeforcesLogin func1_obj = codeforcesLogin();
 CodechefLogin func11_obj = CodechefLogin();
 Func2 func2_obj = Func2();
 Func3 func3_obj = Func3();
-Func4 func4_obj = Func4();
+Submissions func4_obj = Submissions();
 Func5 func5_obj = Func5();
 
 bool codeforcesPage = true;
@@ -85,7 +86,7 @@ class MyAppState extends State<Application> {
       codeforcesPageState(),
       func2_obj.func2(),
       func3_obj.func3(),
-      func4_obj.func4(),
+      func4_obj,
       func5_obj.func5(),
     ];
 
@@ -127,7 +128,7 @@ class MyAppState extends State<Application> {
               icon: Icon(
                 Icons.trending_up,
               ),
-              title: Text('Upsolve'),
+              title: Text('Submissions'),
             ),
             BottomNavigationBarItem(
               icon: Icon(

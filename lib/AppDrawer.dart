@@ -39,119 +39,37 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
           ),
-          ListTile(
-            leading: Icon(Icons.change_history),
-            title: Text('Submissions'),
-            onTap: () {
-              // change app state...
-              Navigator.pop(context); // close the drawer
-            },
-          ),
+
           ListTile(
             leading: Icon(Icons.assignment_return),
             title: Text('Codeforces Logout'),
             onTap: () async {
+              selected_index = 0;
               SharedPreferences prefs = await SharedPreferences.getInstance();
               var handle = prefs.getString('codeforces_handle');
-
-              if (handle != null) {
-                prefs.remove('codeforces_handle');
-                codeforces_login = false;
-                codeforcesPage = true;
-                Navigator.pop(context);
-                // Get.off(MyApp());
-                // Alert(
-                //   image: Image.asset(
-                //     'images/logout.jpg',
-                //     height: 150.0,
-                //   ),
-                //   context: scaffoldKey.currentContext,
-                //   title: "Logged Out Successfully",
-                //   desc: "Reload pages to see changes",
-                //   buttons: [],
-                // ).show();
-                setState(() {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => MyApp()));
-                  // (context as Element).reassemble();
-                });
-              } else {
-                Navigator.pop(context);
-                codeforcesPage = true;
-                // Get.off(MyApp());
-                // Alert(
-                //   image: Image.asset(
-                //     'images/logout.jpg',
-                //     height: 150.0,
-                //   ),
-                //   title: "Already Logged out",
-                //   desc: "Reload pages to see changes",
-                //   buttons: [],
-                // ).show();
-                setState(() {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => MyApp()));
-                  // (context as Element).reassemble();
-                });
-              }
+              prefs.remove('codeforces_handle');
+              codeforces_login = false;
+              codeforcesPage = true;
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => MyApp()));
             },
           ), //d
           ListTile(
             leading: Icon(Icons.assignment_return),
             title: Text('Codechef Logout'),
             onTap: () async {
+              selected_index = 0;
               SharedPreferences prefs = await SharedPreferences.getInstance();
               var handle = prefs.getString('codechef_handle');
-
-              if (handle != null) {
-                prefs.remove('codechef_handle');
-                codechef_login = false;
-                codeforcesPage = false;
-                Navigator.pop(context);
-                // Get.off(MyApp());
-                // Alert(
-                //   image: Image.asset(
-                //     'images/logout.jpg',
-                //     height: 150.0,
-                //   ),
-                //   context: scaffoldKey.currentContext,
-                //   title: "Logged Out Successfully",
-                //   desc: "Reload pages to see changes",
-                //   buttons: [],
-                // ).show();
-                setState(() {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => MyApp()));
-                  // (context as Element).reassemble();
-                });
-              } else {
-                Navigator.pop(context);
-                codeforcesPage = false;
-                // Get.off(MyApp());
-                // Alert(
-                //   image: Image.asset(
-                //     'images/logout.jpg',
-                //     height: 150.0,
-                //   ),
-                //   context: scaffoldKey.currentContext,
-                //   title: "Already Logged out",
-                //   desc: "Reload pages to see changes",
-                //   buttons: [],
-                // ).show();
-                setState(() {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => MyApp()));
-                  // (context as Element).reassemble();
-                });
-              }
+              prefs.remove('codechef_handle');
+              codechef_login = false;
+              codeforcesPage = false;
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => MyApp()));
             },
           ), // rawer stuffs
         ],
