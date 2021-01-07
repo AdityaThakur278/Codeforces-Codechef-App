@@ -7,10 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:codeforces_codechef/Submissions/submissions.dart';
 import 'package:codeforces_codechef/Problems/problemsCF.dart';
 import 'package:codeforces_codechef/Upcoming/upcoming.dart';
-import 'func2.dart';
 import 'func3.dart';
-import 'func4.dart';
-import 'func5.dart';
 import 'appBar.dart';
 import 'package:codeforces_codechef/login/codeforcesLogin.dart';
 
@@ -130,7 +127,7 @@ class MyAppState extends State<Application> {
               icon: Icon(
                 Icons.trending_up,
               ),
-              title: Text('Submissions'),
+              title: Text('Solved'),
             ),
             BottomNavigationBarItem(
               icon: Icon(

@@ -104,6 +104,7 @@ class _CF_submissionsState extends State<CF_submissions> {
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
+                  elevation: 8.0,
                   child: ListTile(
                     title: Text(snapshot.data[index].index +
                         ". " +

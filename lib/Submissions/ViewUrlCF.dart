@@ -43,7 +43,7 @@ class _ViewUrlCFState extends State<ViewUrlCF> {
                 initialOptions: InAppWebViewGroupOptions(
                   crossPlatform: InAppWebViewOptions(
                       debuggingEnabled: true,
-                      preferredContentMode: UserPreferredContentMode.DESKTOP),
+                      preferredContentMode: UserPreferredContentMode.MOBILE),
                 ),
                 onWebViewCreated: (InAppWebViewController controller) {
                   webView = controller;

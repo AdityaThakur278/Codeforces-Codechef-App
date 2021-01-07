@@ -5,6 +5,11 @@ import 'package:flutter/cupertino.dart';
 import 'dart:async';
 import 'dart:convert';
 
+const color1 = const Color(0xff1da777);
+const color2 = const Color(0xff4167b2);
+const color3 = const Color(0xff4a54a7);
+const color4 = const Color(0xff478cf6);
+
 class Info {
   String firstname;
   String lastname;
@@ -197,7 +202,7 @@ class _UserInfoState extends State<UserInfoCF> {
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: CircleAvatar(
-                            backgroundColor: Colors.grey,
+                            backgroundColor: color3,
                             radius: 100.0,
                             child: CircleAvatar(
                               backgroundImage: NetworkImage(
@@ -224,7 +229,15 @@ class _UserInfoState extends State<UserInfoCF> {
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error'));
                 }
-                return Center(child: CircularProgressIndicator());
+                return Center(
+                    child: Column(
+                  children: [
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    CircularProgressIndicator(),
+                  ],
+                ));
               }),
         ],
       ),

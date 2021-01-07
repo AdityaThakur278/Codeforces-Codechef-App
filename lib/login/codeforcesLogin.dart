@@ -175,7 +175,7 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
                 codeforcesPage = true;
                 // });
 
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MyApp(),
@@ -195,7 +195,7 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
                   // setState(() {
                   codeforcesPage = false;
                   // });
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => MyApp(),

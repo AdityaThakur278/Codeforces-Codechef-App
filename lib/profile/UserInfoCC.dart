@@ -219,7 +219,16 @@ class _UserInfoCCState extends State<UserInfoCC> {
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error'));
                 }
-                return Center(child: CircularProgressIndicator());
+                return Center(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 30.0,
+                      ),
+                      CircularProgressIndicator(),
+                    ],
+                  ),
+                );
               }),
         ],
       ),

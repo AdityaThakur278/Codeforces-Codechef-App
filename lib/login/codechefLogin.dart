@@ -176,7 +176,7 @@ class _CodechefLoginState extends State<CodechefLogin> {
                 // setState(() {
                 codeforcesPage = true;
                 // });
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MyApp(),

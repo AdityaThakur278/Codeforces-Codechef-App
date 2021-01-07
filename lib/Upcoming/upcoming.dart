@@ -190,10 +190,10 @@ class _UpcomingState extends State<Upcoming> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("  :  "),
-                              Text("  :  "),
-                              Text("  :  "),
-                              Text("  :  "),
+                              Text("  -  "),
+                              Text("  -  "),
+                              Text("  -  "),
+                              Text("  -  "),
                             ],
                           ),
                           Column(

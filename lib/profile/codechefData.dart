@@ -134,9 +134,3 @@ class _CodechefDataState extends State<CodechefData> {
     );
   }
 }
-
-TextStyle style() {
-  return TextStyle(
-    fontSize: 20.0,
-  );
-}

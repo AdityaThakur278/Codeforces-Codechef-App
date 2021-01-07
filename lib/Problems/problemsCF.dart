@@ -84,6 +84,7 @@ class _ProblemsCFState extends State<ProblemsCF> {
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
+                  elevation: 8.0,
                   child: ListTile(
                     title: Text(snapshot.data[index].index +
                         ". " +
