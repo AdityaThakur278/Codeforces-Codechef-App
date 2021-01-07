@@ -3,7 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'main.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 
 const color1 = const Color(0xff1da777);
 const color2 = const Color(0xff4167b2);

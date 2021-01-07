@@ -24,7 +24,7 @@ String formatDuration(Duration d) {
     tokens.add('${hours}H');
   }
   if (tokens.isNotEmpty || minutes != 0) {
-    tokens.add('${minutes}H');
+    tokens.add('${minutes}M');
   }
   tokens.add('${seconds}S');
 
@@ -131,11 +131,11 @@ class _UpcomingState extends State<Upcoming> {
     else if (site == 'CodeForces::Gym') sitename = 'codeforces.jpg';
 
     return CircleAvatar(
-      radius: 35.0,
+      radius: 28.0,
       backgroundColor: color3,
       child: CircleAvatar(
         backgroundImage: AssetImage('images/$sitename'),
-        radius: 30.0,
+        radius: 26.0,
       ),
     );
   }
@@ -176,18 +176,41 @@ class _UpcomingState extends State<Upcoming> {
                     child: ListTile(
                       leading: contestimage(snapshot.data[index].site),
                       title: Text(snapshot.data[index].name),
-                      subtitle: Text('Platform    : ' +
-                          snapshot.data[index].site +
-                          '\nDate            : ' +
-                          snapshot.data[index].start_time
-                              .toString()
-                              .substring(0, 10) +
-                          '\nStart Time : ' +
-                          snapshot.data[index].start_time
-                              .toString()
-                              .substring(12, 19) +
-                          '\nDuration     : ' +
-                          snapshot.data[index].duration),
+                      subtitle: Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Platform"),
+                              Text("Date"),
+                              Text("Start Time"),
+                              Text("Duration"),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("  :  "),
+                              Text("  :  "),
+                              Text("  :  "),
+                              Text("  :  "),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(snapshot.data[index].site),
+                              Text(snapshot.data[index].start_time
+                                  .toString()
+                                  .substring(0, 10)),
+                              Text(snapshot.data[index].start_time
+                                  .toString()
+                                  .substring(12, 19)),
+                              Text(snapshot.data[index].duration),
+                            ],
+                          )
+                        ],
+                      ),
                       onTap: () {
                         _launchURL(snapshot.data[index].url);
                       },

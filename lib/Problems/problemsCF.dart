@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
+import 'ViewUrlCf.dart';
 
 const color1 = const Color(0xff1da777);
 const color2 = const Color(0xff4167b2);
@@ -79,6 +80,7 @@ class _ProblemsCFState extends State<ProblemsCF> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
+              physics: BouncingScrollPhysics(),
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
@@ -90,6 +92,19 @@ class _ProblemsCFState extends State<ProblemsCF> {
                         (snapshot.data[index].rating.toString() ?? "NA") +
                         "     Solved-by : " +
                         snapshot.data[index].solvedCount.toString()),
+                    onTap: () {
+                      String url =
+                          "https://codeforces.com/problemset/problem/" +
+                              snapshot.data[index].contestId.toString() +
+                              "/" +
+                              snapshot.data[index].index;
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ViewUrlCf(url),
+                        ),
+                      );
+                    },
                   ),
                 );
               },

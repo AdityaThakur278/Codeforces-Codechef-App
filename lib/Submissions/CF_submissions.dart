@@ -3,7 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'ViewUrlCF.dart';
 
 class SubmissionInfo {
   int id;
@@ -60,14 +61,29 @@ class CF_submissions extends StatefulWidget {
 }
 
 class _CF_submissionsState extends State<CF_submissions> {
+  InAppWebViewController webView;
   Future<List<SubmissionInfo>> future;
 
-  _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url, forceWebView: true, enableJavaScript: true);
-    } else {
-      throw 'Could not launch $url';
-    }
+  webview(String Url) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => InAppWebView(
+          initialUrl: Url,
+          initialHeaders: {},
+          initialOptions: InAppWebViewGroupOptions(
+            crossPlatform: InAppWebViewOptions(
+                debuggingEnabled: true,
+                preferredContentMode: UserPreferredContentMode.DESKTOP),
+          ),
+          onWebViewCreated: (InAppWebViewController controller) {
+            webView = controller;
+          },
+          onLoadStart: (InAppWebViewController controller, String url) {},
+          onLoadStop: (InAppWebViewController controller, String url) async {},
+        ),
+      ),
+    );
   }
 
   @override
@@ -84,6 +100,7 @@ class _CF_submissionsState extends State<CF_submissions> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
+              physics: BouncingScrollPhysics(),
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext context, int index) {
                 return Card(
@@ -96,11 +113,17 @@ class _CF_submissionsState extends State<CF_submissions> {
                         "   Rating : " +
                         (snapshot.data[index].rating.toString() ?? "NA")),
                     onTap: () {
-                      _launchURL('https://codeforces.com/contest/' +
+                      String url = 'https://codeforces.com/contest/' +
                           snapshot.data[index].contestId.toString() +
                           "/submission/" +
-                          snapshot.data[index].id.toString() +
-                          "?mobile=true");
+                          snapshot.data[index].id.toString();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ViewUrlCF(url),
+                        ),
+                      );
+                      // webview(url);
                     },
                   ),
                 );

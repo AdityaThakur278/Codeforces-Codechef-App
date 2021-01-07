@@ -13,7 +13,6 @@ import 'func4.dart';
 import 'func5.dart';
 import 'appBar.dart';
 import 'package:codeforces_codechef/login/codeforcesLogin.dart';
-import 'package:get/get.dart';
 
 bool codeforces_login;
 bool codechef_login;
