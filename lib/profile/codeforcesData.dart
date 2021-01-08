@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:codeforces_codechef/profile/UserInfoCF.dart';
+import 'GraphInfoCF.dart';
 
 class UserInfo {
   String handle;
@@ -52,6 +53,12 @@ class CodeforcesData extends StatefulWidget {
 }
 
 class _CodeforcesDataState extends State<CodeforcesData> {
+  @override
+  void initState() {
+    error2 = false;
+    super.initState();
+  }
+
   // Future<UserInfo> _futureAlbum;
   //
   // Future<UserInfo> getFutureUserInfo() {
@@ -131,6 +138,7 @@ class _CodeforcesDataState extends State<CodeforcesData> {
         child: Column(
           children: [
             UserInfoCF(),
+            graph(),
           ],
         ),
       ),

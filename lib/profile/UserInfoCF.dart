@@ -9,6 +9,7 @@ const color1 = const Color(0xff1da777);
 const color2 = const Color(0xff4167b2);
 const color3 = const Color(0xff4a54a7);
 const color4 = const Color(0xff478cf6);
+bool error2 = false;
 
 class Info {
   String firstname;
@@ -50,6 +51,8 @@ Future<Info> getData() async {
       await http.get('https://codeforces.com/api/user.info?handles=' + handle);
   try {
     if (response.statusCode == 200) {
+      error2 = false;
+      // throw ("");
       var json = jsonDecode(response.body)['result'][0];
       return (Info(
         json['firstName'],
@@ -70,6 +73,7 @@ Future<Info> getData() async {
       throw Exception('Failed to load album');
     }
   } catch (e) {
+    error2 = true;
     print("Exception");
   }
 }
@@ -179,7 +183,28 @@ class _UserInfoState extends State<UserInfoCF> {
           FutureBuilder(
               future: future,
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
+                if (error2) {
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
+                    child: Center(
+                      child: Card(
+                          color: color3,
+                          elevation: 8.0,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              "Error Occured!! \n Please Re-Login/Refresh",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                          )),
+                    ),
+                  );
+                } else if (snapshot.hasData) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [

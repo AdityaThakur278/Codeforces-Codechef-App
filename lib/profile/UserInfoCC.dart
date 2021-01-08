@@ -5,6 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'dart:async';
 import 'dart:convert';
 
+bool error1 = false;
+const color1 = const Color(0xff1da777);
+const color2 = const Color(0xff4167b2);
+const color3 = const Color(0xff4a54a7);
+const color4 = const Color(0xff478cf6);
+
 class Info {
   String username;
   String name;
@@ -38,11 +44,13 @@ class Info {
 Future<Info> getData() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String handle = prefs.getString('codechef_handle');
-
+  print(handle);
   final response = await http.get(
       'https://competitive-coding-api.herokuapp.com/api/codechef/' + handle);
   try {
     if (response.statusCode == 200) {
+      error1 = false;
+      // throw Exception('Failed to load album');
       var json1 = jsonDecode(response.body);
       var json2 = jsonDecode(response.body)['user_details'];
       return (Info(
@@ -60,10 +68,12 @@ Future<Info> getData() async {
         json2['institution'],
       ));
     } else {
+      print("problem1");
       throw Exception('Failed to load album');
     }
   } catch (e) {
-    print("Exception");
+    error1 = true;
+    print("problem2");
   }
 }
 
@@ -77,7 +87,9 @@ class _UserInfoCCState extends State<UserInfoCC> {
   @override
   void initState() {
     super.initState();
+    // setState(() {
     future = getData();
+    // });
   }
 
   Widget wid() {
@@ -169,7 +181,28 @@ class _UserInfoCCState extends State<UserInfoCC> {
           FutureBuilder(
               future: future,
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
+                if (error1) {
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
+                    child: Center(
+                      child: Card(
+                          color: color3,
+                          elevation: 8.0,
+                          child: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              "Error Occured!! \n Please Re-Login/Refresh",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20.0,
+                              ),
+                            ),
+                          )),
+                    ),
+                  );
+                } else if (snapshot.hasData) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [

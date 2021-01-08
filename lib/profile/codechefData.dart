@@ -1,4 +1,5 @@
 import 'package:codeforces_codechef/AppDrawer.dart';
+import 'package:codeforces_codechef/profile/GraphInfoCF.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -6,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:codeforces_codechef/profile/UserInfoCC.dart';
+import 'GraphInfoCC.dart';
 
 class UserInfo {
   String handle;
@@ -52,6 +54,11 @@ class CodechefData extends StatefulWidget {
 }
 
 class _CodechefDataState extends State<CodechefData> {
+  @override
+  void initState() {
+    error1 = false;
+    super.initState();
+  }
   // Future<UserInfo> _futureAlbum;
   //
   // Future<UserInfo> getFutureUserInfo() {
@@ -127,6 +134,7 @@ class _CodechefDataState extends State<CodechefData> {
         child: Column(
           children: [
             UserInfoCC(),
+            graph1(),
           ],
         ),
       ),

@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  syncfusion_flutter_charts: ^18.4.33
   flutter_inappwebview: ^4.0.0+4
   url_launcher: ^5.7.10
   rflutter_alert: ^1.1.0

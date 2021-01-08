@@ -31,38 +31,45 @@ class _ViewUrlCCState extends State<ViewUrlCC> {
         ),
       ),
       body: Container(
-          child: Column(children: <Widget>[
-        Expanded(
-            child: Stack(
+        child: Column(
           children: <Widget>[
-            Align(
-              alignment: Alignment.center,
-              child: InAppWebView(
-                initialUrl: widget.Url,
-                initialHeaders: {},
-                initialOptions: InAppWebViewGroupOptions(
-                  crossPlatform: InAppWebViewOptions(
-                      debuggingEnabled: true,
-                      preferredContentMode: UserPreferredContentMode.MOBILE),
-                ),
-                onWebViewCreated: (InAppWebViewController controller) {
-                  webView = controller;
-                },
-                onLoadStart: (InAppWebViewController controller, String url) {},
-                onLoadStop:
-                    (InAppWebViewController controller, String url) async {},
-                onProgressChanged:
-                    (InAppWebViewController controller, int progress) {
-                  setState(() {
-                    this.progress = progress / 100;
-                  });
-                },
+            Expanded(
+              child: Stack(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.center,
+                    child: InAppWebView(
+                      initialUrl: widget.Url,
+                      initialHeaders: {},
+                      initialOptions: InAppWebViewGroupOptions(
+                        crossPlatform: InAppWebViewOptions(
+                            debuggingEnabled: true,
+                            preferredContentMode:
+                                UserPreferredContentMode.MOBILE),
+                      ),
+                      onWebViewCreated: (InAppWebViewController controller) {
+                        webView = controller;
+                      },
+                      onLoadStart:
+                          (InAppWebViewController controller, String url) {},
+                      onLoadStop: (InAppWebViewController controller,
+                          String url) async {},
+                      onProgressChanged:
+                          (InAppWebViewController controller, int progress) {
+                        setState(() {
+                          this.progress = progress / 100;
+                        });
+                      },
+                    ),
+                  ),
+                  Align(
+                      alignment: Alignment.center, child: _buildProgressBar()),
+                ],
               ),
-            ),
-            Align(alignment: Alignment.center, child: _buildProgressBar()),
+            )
           ],
-        ))
-      ])),
+        ),
+      ),
       // body: Column(
       //   children: [
       //     InAppWebView(
