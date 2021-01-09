@@ -129,7 +129,7 @@ class _CodechefLoginState extends State<CodechefLogin> {
               child: Material(
                 elevation: 5.0,
                 borderRadius: BorderRadius.circular(30.0),
-                color: color3,
+                color: color1,
                 child: MaterialButton(
                   minWidth: double.infinity,
                   onPressed: () {

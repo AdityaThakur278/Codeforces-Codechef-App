@@ -123,7 +123,7 @@ class _ProblemsCFState extends State<ProblemsCF> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: color3,
+        backgroundColor: color1,
         title: Text("Codeforces Problemset"),
       ),
       drawer: AppDrawer(),

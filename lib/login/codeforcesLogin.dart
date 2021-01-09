@@ -159,7 +159,7 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
     return Scaffold(
       // key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: color3,
+        backgroundColor: color1,
         // you can put Icon as well, it accepts any widget.
         title: Text("Profile"),
         actions: <Widget>[

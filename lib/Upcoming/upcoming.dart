@@ -132,7 +132,7 @@ class _UpcomingState extends State<Upcoming> {
 
     return CircleAvatar(
       radius: 28.0,
-      backgroundColor: color3,
+      backgroundColor: color1,
       child: CircleAvatar(
         backgroundImage: AssetImage('images/$sitename'),
         radius: 26.0,
@@ -158,7 +158,7 @@ class _UpcomingState extends State<Upcoming> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: color3,
+        backgroundColor: color1,
         title: Text("Upcoming Contests"),
       ),
       drawer: AppDrawer(),

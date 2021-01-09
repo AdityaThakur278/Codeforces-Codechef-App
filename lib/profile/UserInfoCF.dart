@@ -227,7 +227,7 @@ class _UserInfoState extends State<UserInfoCF> {
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: CircleAvatar(
-                            backgroundColor: color3,
+                            backgroundColor: color1,
                             radius: 100.0,
                             child: CircleAvatar(
                               backgroundImage: NetworkImage(

@@ -10,6 +10,7 @@ import 'package:codeforces_codechef/Upcoming/upcoming.dart';
 import 'func3.dart';
 import 'appBar.dart';
 import 'package:codeforces_codechef/login/codeforcesLogin.dart';
+import 'package:codeforces_codechef/Friends/friends.dart';
 
 bool codeforces_login;
 bool codechef_login;
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
 codeforcesLogin func1_obj = codeforcesLogin();
 CodechefLogin func11_obj = CodechefLogin();
 Upcoming func2_obj = Upcoming();
-Func3 func3_obj = Func3();
+Friends func3_obj = Friends();
 Submissions func4_obj = Submissions();
 ProblemsCF func5_obj = ProblemsCF();
 
@@ -84,7 +85,7 @@ class MyAppState extends State<Application> {
     List<Widget> _widgetOptions = <Widget>[
       codeforcesPageState(),
       func2_obj,
-      func3_obj.func3(),
+      func3_obj,
       func4_obj,
       func5_obj,
     ];
@@ -137,7 +138,7 @@ class MyAppState extends State<Application> {
             ),
           ],
           currentIndex: selected_index,
-          selectedItemColor: color3,
+          selectedItemColor: color1,
           onTap: onTapped,
         ),
       ),

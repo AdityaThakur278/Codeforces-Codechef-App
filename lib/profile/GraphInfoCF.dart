@@ -99,7 +99,7 @@ class _graphState extends State<graph> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+      margin: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
       child: Card(
         elevation: 8.0,
         child: Container(

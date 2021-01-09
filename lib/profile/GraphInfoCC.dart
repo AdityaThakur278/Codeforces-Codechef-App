@@ -103,7 +103,7 @@ class _graph1State extends State<graph1> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+      margin: EdgeInsets.only(left: 8.0, right: 8.0),
       child: Card(
         elevation: 8.0,
         child: Container(
@@ -144,36 +144,37 @@ class _graph1State extends State<graph1> {
                   ),
                   legend: Legend(isVisible: false),
                   tooltipBehavior: TooltipBehavior(
-                      enable: true,
-                      builder: (dynamic data, dynamic point, dynamic series,
-                          int pointIndex, int seriesIndex) {
-                        Contest _temp = graphData[pointIndex];
-                        return Container(
-                          width: 90,
-                          decoration: BoxDecoration(
-                            color: Colors.teal,
-                            borderRadius: BorderRadius.circular(3),
-                          ),
-                          padding: EdgeInsets.all(10),
-                          child: Wrap(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Rank : " + _temp.rank.toString(),
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  Text(
-                                    _temp.contestname,
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      }),
+                    enable: true,
+                    builder: (dynamic data, dynamic point, dynamic series,
+                        int pointIndex, int seriesIndex) {
+                      Contest _temp = graphData[pointIndex];
+                      return Container(
+                        width: 90,
+                        decoration: BoxDecoration(
+                          color: Colors.teal,
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        padding: EdgeInsets.all(10),
+                        child: Wrap(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Rank : " + _temp.rank.toString(),
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                Text(
+                                  _temp.contestname,
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                   // zoomPanBehavior: ZoomPanBehavior(
                   //     enableDoubleTapZooming: true, enablePinching: true),
                   series: lineSeries,

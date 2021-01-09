@@ -79,7 +79,7 @@ class _SubmissionsState extends State<Submissions> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: color3,
+        backgroundColor: color1,
         // you can put Icon as well, it accepts any widget.
         title: Text("Submissions"),
         actions: <Widget>[
