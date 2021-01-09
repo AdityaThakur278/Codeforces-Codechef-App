@@ -85,7 +85,10 @@ class _CFfriendsState extends State<CFfriends> {
       return Center(
         child: Card(
           child: ListTile(
-            title: Text("No Friend"),
+            title: Text(
+              "No Friend",
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
       );

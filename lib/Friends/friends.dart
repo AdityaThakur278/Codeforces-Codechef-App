@@ -241,7 +241,9 @@ class _FriendsState extends State<Friends> {
                 valid = false;
                 throw ("Exception");
               }
-            } catch (e) {
+            }
+            //
+            catch (e) {
               valid = false;
               print("Exception");
             }

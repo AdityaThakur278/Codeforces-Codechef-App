@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'UserInfoCF.dart';
 import 'GraphInfoCF.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:codeforces_codechef/main.dart';
 
 const color1 = const Color(0xff1da777);
 const color2 = const Color(0xff4167b2);
@@ -29,6 +31,40 @@ class _CFfriendProfileState extends State<CFfriendProfile> {
             Navigator.pop(context, false);
           },
         ),
+        actions: [
+          Container(
+            padding: EdgeInsets.only(left: 10.0, right: 5.0),
+            child: IconButton(
+              icon: Icon(Icons.delete),
+              onPressed: () async {
+                String handle = widget.handle;
+                List<String> duplicate = [];
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                List<String> ls = prefs.getStringList('codeforces_friend');
+
+                print(handle);
+                for (var i in ls) {
+                  print(i);
+                  if (i.toLowerCase() != handle.toLowerCase()) {
+                    duplicate.add(i);
+                  }
+                }
+                if (duplicate.length == 0) {
+                  prefs.setStringList('codeforces_friend', null);
+                } else {
+                  prefs.setStringList('codeforces_friend', duplicate);
+                }
+
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyApp(),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
