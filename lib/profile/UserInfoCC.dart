@@ -14,9 +14,9 @@ class Info {
   String name;
   int rating;
   String stars;
-  int highest_rating;
-  int global_rank;
-  int country_rank;
+  String highest_rating;
+  String global_rank;
+  String country_rank;
   String country;
   String state;
   String city;
@@ -51,14 +51,26 @@ Future<Info> getData() async {
       // throw Exception('Failed to load album');
       var json1 = jsonDecode(response.body);
       var json2 = jsonDecode(response.body)['user_details'];
+      // print(json2['username']);
+      // print(json2['name']);
+      // print(json1['rating']);
+      // print(json1['stars'].toString());
+      // print(json1['highest_rating'].toString());
+      // print(json1['global_rank']);
+      // print(json1['country_rank']);
+      // print(json2['country']);
+      // print(json2['state']);
+      // print(json2['city']);
+      // print(json2['student/professional']);
+      // print(json2['institution']);
       return (Info(
         json2['username'], //
         json2['name'], //
         json1['rating'],
-        json1['stars'], //
-        json1['highest_rating'], //
-        json1['global_rank'], //
-        json1['country_rank'], //
+        json1['stars'] == null ? "Null" : json1['stars'], //
+        json1['highest_rating'].toString(), //
+        json1['global_rank'].toString(), //
+        json1['country_rank'].toString(), //
         json2['country'],
         json2['state'],
         json2['city'],
@@ -129,7 +141,6 @@ class _UserInfoCCState extends State<UserInfoCC> {
                   ),
                   Column(
                     children: [
-                      Text(" - "),
                       Text(" - "),
                       Text(" - "),
                       Text(" - "),

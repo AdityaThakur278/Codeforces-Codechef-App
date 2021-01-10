@@ -43,7 +43,7 @@ Future<List<Info>> getData() async {
         }
       });
 
-      json1.forEach((contestname, contest_list) {
+      json2.forEach((contestname, contest_list) {
         if (contestname != 'count') {
           for (var x in contest_list) {
             Info variable =

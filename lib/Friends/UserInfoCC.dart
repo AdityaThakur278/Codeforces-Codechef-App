@@ -14,9 +14,9 @@ class Info {
   String name;
   int rating;
   String stars;
-  int highest_rating;
-  int global_rank;
-  int country_rank;
+  String highest_rating;
+  String global_rank;
+  String country_rank;
   String country;
   String state;
   String city;
@@ -66,10 +66,10 @@ class _UserInfoCCState extends State<UserInfoCC> {
           json2['username'], //
           json2['name'], //
           json1['rating'],
-          json1['stars'], //
-          json1['highest_rating'], //
-          json1['global_rank'], //
-          json1['country_rank'], //
+          json1['stars'] == null ? "Null" : json1['stars'], //
+          json1['highest_rating'].toString(), //
+          json1['global_rank'].toString(), //
+          json1['country_rank'].toString(), //
           json2['country'],
           json2['state'],
           json2['city'],
@@ -133,7 +133,6 @@ class _UserInfoCCState extends State<UserInfoCC> {
                   ),
                   Column(
                     children: [
-                      Text(" - "),
                       Text(" - "),
                       Text(" - "),
                       Text(" - "),
