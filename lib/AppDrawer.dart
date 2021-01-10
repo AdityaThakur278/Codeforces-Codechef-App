@@ -4,6 +4,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:codeforces_codechef/colors.dart';
+import 'AboutUs.dart';
 
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -66,6 +67,17 @@ class _AppDrawerState extends State<AppDrawer> {
                   context,
                   MaterialPageRoute(
                       builder: (BuildContext context) => MyApp()));
+            },
+          ), //
+          ListTile(
+            leading: Icon(Icons.contact_page),
+            title: Text('About Developer'),
+            onTap: () async {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Aboutus(),
+                  ));
             },
           ), // rawer stuffs
         ],
