@@ -3,11 +3,7 @@ import 'UserInfoCF.dart';
 import 'GraphInfoCF.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:codeforces_codechef/main.dart';
-
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
+import 'package:codeforces_codechef/colors.dart';
 
 class CFfriendProfile extends StatefulWidget {
   String handle;
@@ -22,7 +18,7 @@ class _CFfriendProfileState extends State<CFfriendProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: color3,
+        backgroundColor: color5,
         title: Text('Codeforces Friend'),
         // automaticallyImplyLeading: true,
         leading: IconButton(

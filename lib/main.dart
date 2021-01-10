@@ -7,10 +7,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:codeforces_codechef/Submissions/submissions.dart';
 import 'package:codeforces_codechef/Problems/problemsCF.dart';
 import 'package:codeforces_codechef/Upcoming/upcoming.dart';
-import 'func3.dart';
 import 'appBar.dart';
 import 'package:codeforces_codechef/login/codeforcesLogin.dart';
 import 'package:codeforces_codechef/Friends/friends.dart';
+import 'package:codeforces_codechef/colors.dart';
 
 bool codeforces_login;
 bool codechef_login;
@@ -37,11 +37,6 @@ Future<void> main() async {
 
   runApp(MyApp());
 }
-
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
 
 class MyApp extends StatelessWidget {
   @override
@@ -138,7 +133,7 @@ class MyAppState extends State<Application> {
             ),
           ],
           currentIndex: selected_index,
-          selectedItemColor: color1,
+          selectedItemColor: color5,
           onTap: onTapped,
         ),
       ),

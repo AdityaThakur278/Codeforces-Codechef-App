@@ -1,15 +1,13 @@
+import 'package:codeforces_codechef/error.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
 import 'dart:convert';
+import 'package:codeforces_codechef/colors.dart';
 
 bool error1 = false;
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
 
 class Info {
   String username;
@@ -182,24 +180,21 @@ class _UserInfoCCState extends State<UserInfoCC> {
               future: future,
               builder: (context, snapshot) {
                 if (error1) {
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 30.0),
-                    child: Center(
-                      child: Card(
-                          color: color3,
-                          elevation: 8.0,
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Text(
-                              "Error Occured!! \n Please Re-Login/Refresh",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.0,
-                              ),
+                  return Center(
+                    child: Card(
+                      elevation: 8.0,
+                      child: ListTile(
+                        title: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Text(
+                            "Error Occured!!\n Please Re-Login/Refresh",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
                             ),
-                          )),
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 } else if (snapshot.hasData) {
@@ -250,16 +245,14 @@ class _UserInfoCCState extends State<UserInfoCC> {
                     ],
                   );
                 } else if (snapshot.hasError) {
-                  return Center(child: Text('Error'));
+                  return Center(child: error_to_show);
                 }
                 return Center(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 30.0,
-                      ),
-                      CircularProgressIndicator(),
-                    ],
+                  child: Card(
+                    elevation: 8.0,
+                    child: ListTile(
+                      title: Center(child: CircularProgressIndicator()),
+                    ),
                   ),
                 );
               }),

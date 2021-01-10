@@ -8,6 +8,7 @@ import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:codeforces_codechef/colors.dart';
 
 class Contest {
   String contestname;
@@ -85,6 +86,7 @@ class _graph1State extends State<graph1> {
       List<Contest> graphData) {
     return [
       LineSeries<Contest, DateTime>(
+        color: color5,
         dataSource: graphData,
         xValueMapper: (Contest contest, _) => contest.time,
         yValueMapper: (Contest contest, _) => contest.rating,
@@ -94,6 +96,7 @@ class _graph1State extends State<graph1> {
           height: 4,
           width: 4,
           // color: Colors.red,
+          borderColor: color5,
           isVisible: true,
         ),
       )
@@ -151,7 +154,7 @@ class _graph1State extends State<graph1> {
                       return Container(
                         width: 90,
                         decoration: BoxDecoration(
-                          color: Colors.teal,
+                          color: color5,
                           borderRadius: BorderRadius.circular(3),
                         ),
                         padding: EdgeInsets.all(10),

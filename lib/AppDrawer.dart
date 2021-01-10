@@ -3,11 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'main.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:codeforces_codechef/colors.dart';
 
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class AppDrawer extends StatefulWidget {
@@ -25,7 +22,7 @@ class _AppDrawerState extends State<AppDrawer> {
             height: 150.0,
             child: DrawerHeader(
               decoration: BoxDecoration(
-                color: color3,
+                color: color5,
               ),
               child: Center(
                 child: Text(

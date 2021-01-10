@@ -1,3 +1,4 @@
+import 'package:codeforces_codechef/error.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -5,6 +6,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'ViewUrlCF.dart';
+import 'package:codeforces_codechef/colors.dart';
 
 class SubmissionInfo {
   int id;
@@ -28,9 +30,9 @@ Future<List<SubmissionInfo>> getData() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String handle = prefs.getString('codeforces_handle');
   print(handle);
+
   final response =
       await http.get('https://codeforces.com/api/user.status?handle=' + handle);
-
   try {
     if (response.statusCode == 200) {
       var json = jsonDecode(response.body)['result'];
@@ -131,7 +133,9 @@ class _CF_submissionsState extends State<CF_submissions> {
               },
             );
           } else if (snapshot.hasError) {
-            return Text('Error occur');
+            return Center(
+              child: error_to_show,
+            );
           }
           return Center(child: CircularProgressIndicator());
         },

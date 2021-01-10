@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
+import 'package:codeforces_codechef/colors.dart';
 
 class ViewUrlCC extends StatefulWidget {
   String Url;
@@ -20,7 +16,7 @@ class _ViewUrlCCState extends State<ViewUrlCC> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: color3,
+        backgroundColor: color5,
         title: Text('Codechef Submission'),
         // automaticallyImplyLeading: true,
         leading: IconButton(

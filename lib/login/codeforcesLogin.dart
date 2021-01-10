@@ -5,14 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:codeforces_codechef/main.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:codeforces_codechef/colors.dart';
+import 'dart:async';
+import 'dart:convert';
 
 bool circularIndicator = false;
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
-
 void check1() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var handle = prefs.getString('codeforces_handle');
@@ -51,8 +49,8 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
     myController.clear();
     String url = 'https://codeforces.com/api/user.info?handles=' + handle;
 
-    final response = await http.get(url);
     try {
+      final response = await http.get(url);
       if (response.statusCode == 200) {
         // Valid Handle
         circularIndicator = false;
@@ -79,10 +77,10 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
           image: Image.asset(
             'images/codeforces1.png',
             height: 150.0,
-            color: color3,
+            color: color5,
           ),
           context: context,
-          title: "Invalid handle!!",
+          title: "Some Error Occured!!",
           desc: "Enter Valid Handle",
           buttons: [],
         ).show();
@@ -127,7 +125,7 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
               child: Material(
                 elevation: 5.0,
                 borderRadius: BorderRadius.circular(30.0),
-                color: color3,
+                color: color5,
                 child: MaterialButton(
                   minWidth: double.infinity,
                   onPressed: () {
@@ -159,7 +157,7 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
     return Scaffold(
       // key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: color1,
+        backgroundColor: color5,
         // you can put Icon as well, it accepts any widget.
         title: Text("Profile"),
         actions: <Widget>[

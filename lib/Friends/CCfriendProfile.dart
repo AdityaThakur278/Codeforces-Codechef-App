@@ -4,11 +4,7 @@ import 'UserInfoCC.dart';
 import 'GraphInfoCC.dart';
 import 'dart:async';
 import 'package:codeforces_codechef/main.dart';
-
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
+import 'package:codeforces_codechef/colors.dart';
 
 class CCfriendProfile extends StatefulWidget {
   String handle;
@@ -22,7 +18,7 @@ class _CCfriendProfileState extends State<CCfriendProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: color3,
+        backgroundColor: color5,
         title: Text('Codechef Friend'),
         // automaticallyImplyLeading: true,
         leading: IconButton(

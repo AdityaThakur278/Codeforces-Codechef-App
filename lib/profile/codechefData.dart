@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:codeforces_codechef/profile/UserInfoCC.dart';
 import 'GraphInfoCC.dart';
+import 'package:codeforces_codechef/colors.dart';
 
 class UserInfo {
   String handle;

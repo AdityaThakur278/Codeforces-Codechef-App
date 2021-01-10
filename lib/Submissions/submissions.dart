@@ -3,16 +3,12 @@ import 'package:codeforces_codechef/Submissions/CC_submissions.dart';
 import 'package:flutter/material.dart';
 import 'package:codeforces_codechef/main.dart';
 import 'package:codeforces_codechef/AppDrawer.dart';
+import 'package:codeforces_codechef/colors.dart';
 
 class Submissions extends StatefulWidget {
   @override
   _SubmissionsState createState() => _SubmissionsState();
 }
-
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
 
 class _SubmissionsState extends State<Submissions> {
   Widget retWidget() {
@@ -23,7 +19,7 @@ class _SubmissionsState extends State<Submissions> {
         codeforcesPage = true;
         return Center(
           child: FlatButton(
-            color: color3,
+            color: color5,
             onPressed: () {
               selected_index = 0;
               Navigator.pushReplacement(
@@ -51,7 +47,7 @@ class _SubmissionsState extends State<Submissions> {
         codeforcesPage = false;
         return Center(
           child: FlatButton(
-            color: color3,
+            color: color5,
             onPressed: () {
               selected_index = 0;
               Navigator.pushReplacement(
@@ -79,7 +75,7 @@ class _SubmissionsState extends State<Submissions> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: color1,
+        backgroundColor: color5,
         // you can put Icon as well, it accepts any widget.
         title: Text("Submissions"),
         actions: <Widget>[

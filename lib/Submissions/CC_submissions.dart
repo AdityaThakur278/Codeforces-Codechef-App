@@ -1,3 +1,4 @@
+import 'package:codeforces_codechef/error.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -5,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'ViewUrlCC.dart';
+import 'package:codeforces_codechef/colors.dart';
 
 class Info {
   String name;
@@ -25,7 +27,6 @@ Future<List<Info>> getData() async {
 
   final response = await http.get(
       'https://competitive-coding-api.herokuapp.com/api/codechef/' + handle);
-
   try {
     if (response.statusCode == 200) {
       var json1 = jsonDecode(response.body)['fully_solved'];
@@ -124,7 +125,9 @@ class _CC_submissionsState extends State<CC_submissions> {
               },
             );
           } else if (snapshot.hasError) {
-            return Text('Error occur');
+            return Center(
+              child: error_to_show,
+            );
           }
           return Center(
             child: CircularProgressIndicator(),

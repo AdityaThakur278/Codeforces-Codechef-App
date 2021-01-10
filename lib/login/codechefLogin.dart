@@ -5,12 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:codeforces_codechef/main.dart';
 import 'package:http/http.dart' as http;
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:codeforces_codechef/colors.dart';
+import 'dart:convert';
 
 bool circularIndicator = false;
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
 void check2() async {
@@ -49,11 +47,13 @@ class _CodechefLoginState extends State<CodechefLogin> {
 
     String handle = myController.text;
     myController.clear();
-    String url = 'https://codeforces.com/api/user.info?handles=' + handle;
+    String url =
+        'https://competitive-coding-api.herokuapp.com/api/codechef/' + handle;
 
-    final response = await http.get(url);
     try {
-      if (response.statusCode == 200) {
+      final response = await http.get(url);
+      if (response.statusCode == 200 &&
+          jsonDecode(response.body)['status'] == "Success") {
         // Valid Handle
         circularIndicator = false;
         SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -79,11 +79,11 @@ class _CodechefLoginState extends State<CodechefLogin> {
           image: Image.asset(
             'images/codechef1.png',
             height: 150.0,
-            color: color3,
+            color: color5,
           ),
           // context: scaffoldKey.currentContext,
           context: context,
-          title: "Invalid handle!!",
+          title: "Some Error Occured!!",
           desc: "Enter Valid Handle",
           // desc: "Enter Proper Handle",
           buttons: [],
@@ -129,7 +129,7 @@ class _CodechefLoginState extends State<CodechefLogin> {
               child: Material(
                 elevation: 5.0,
                 borderRadius: BorderRadius.circular(30.0),
-                color: color1,
+                color: color5,
                 child: MaterialButton(
                   minWidth: double.infinity,
                   onPressed: () {
@@ -161,7 +161,7 @@ class _CodechefLoginState extends State<CodechefLogin> {
     return Scaffold(
       // key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: color3,
+        backgroundColor: color5,
         // you can put Icon as well, it accepts any widget.
         title: Text("Profile"),
         actions: <Widget>[

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'package:codeforces_codechef/colors.dart';
 
 // bool codeforcesPage = true;
 final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -7,7 +8,7 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 AppBar retAppBar() {
   if (selected_index == 0) {
     return AppBar(
-      backgroundColor: color3,
+      backgroundColor: color5,
       // you can put Icon as well, it accepts any widget.
       title: Text("Profile"),
       actions: <Widget>[
@@ -35,22 +36,22 @@ AppBar retAppBar() {
     );
   } else if (selected_index == 1) {
     return AppBar(
-      backgroundColor: color3,
+      backgroundColor: color5,
       title: Text('Upcoming Contest'),
     );
   } else if (selected_index == 2) {
     return AppBar(
-      backgroundColor: color3,
+      backgroundColor: color5,
       title: Text('Friends'),
     );
   } else if (selected_index == 3) {
     return AppBar(
-      backgroundColor: color3,
+      backgroundColor: color5,
       title: Text('Upsolve'),
     );
   } else if (selected_index == 4) {
     return AppBar(
-      backgroundColor: color3,
+      backgroundColor: color5,
       title: Text('Problemset'),
     );
   }

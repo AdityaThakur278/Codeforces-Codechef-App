@@ -8,11 +8,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
-
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
+import 'package:codeforces_codechef/colors.dart';
+import 'package:codeforces_codechef/colors.dart';
+import 'dart:convert';
 
 class Friends extends StatefulWidget {
   @override
@@ -73,7 +71,7 @@ class _FriendsState extends State<Friends> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: color3,
+        backgroundColor: color5,
         title: Text("Friends"),
         actions: <Widget>[
           Container(
@@ -136,8 +134,9 @@ class _FriendsState extends State<Friends> {
 
             bool valid;
             bool found = false;
-            final response = await http.get(url);
+
             try {
+              final response = await http.get(url);
               if (response.statusCode == 200) {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 List<String> ls = prefs.getStringList("codeforces_friend");
@@ -176,7 +175,7 @@ class _FriendsState extends State<Friends> {
                 image: Image.asset(
                   'images/codeforces1.png',
                   height: 150.0,
-                  color: color3,
+                  color: color5,
                 ),
                 context: context,
                 title: "Friend Already Exists",
@@ -187,7 +186,7 @@ class _FriendsState extends State<Friends> {
                 image: Image.asset(
                   'images/codeforces1.png',
                   height: 150.0,
-                  color: color3,
+                  color: color5,
                 ),
                 context: context,
                 title: "Friend Added Successfully",
@@ -198,10 +197,10 @@ class _FriendsState extends State<Friends> {
                 image: Image.asset(
                   'images/codeforces1.png',
                   height: 150.0,
-                  color: color3,
+                  color: color5,
                 ),
                 context: context,
-                title: "Invalid handle!!",
+                title: "Some Error Occured!!",
                 desc: "Enter Valid Handle",
                 buttons: [],
               ).show();
@@ -217,10 +216,12 @@ class _FriendsState extends State<Friends> {
 
             bool valid;
             bool found = false; // Check repeatition
-            final response = await http.get(url);
 
+            // print(jsonDecode(response.body)['status']);
             try {
-              if (response.statusCode == 200) {
+              final response = await http.get(url);
+              if (response.statusCode == 200 &&
+                  jsonDecode(response.body)['status'] == "Success") {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 List<String> ls = prefs.getStringList("codechef_friend");
 
@@ -261,7 +262,7 @@ class _FriendsState extends State<Friends> {
                 image: Image.asset(
                   'images/codechef1.png',
                   height: 150.0,
-                  color: color3,
+                  color: color5,
                 ),
                 context: context,
                 title: "Friend Already Exists",
@@ -272,7 +273,7 @@ class _FriendsState extends State<Friends> {
                 image: Image.asset(
                   'images/codechef1.png',
                   height: 150.0,
-                  color: color3,
+                  color: color5,
                 ),
                 context: context,
                 title: "Friend Added Successfully",
@@ -283,10 +284,10 @@ class _FriendsState extends State<Friends> {
                 image: Image.asset(
                   'images/codechef1.png',
                   height: 150.0,
-                  color: color3,
+                  color: color5,
                 ),
                 context: context,
-                title: "Invalid handle!!",
+                title: "Some Error Occured!!",
                 desc: "Enter Valid Handle",
                 buttons: [],
               ).show();

@@ -1,14 +1,11 @@
 import 'package:codeforces_codechef/AppDrawer.dart';
+import 'package:codeforces_codechef/error.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 import 'ViewUrlCf.dart';
-
-const color1 = const Color(0xff1da777);
-const color2 = const Color(0xff4167b2);
-const color3 = const Color(0xff4a54a7);
-const color4 = const Color(0xff478cf6);
+import 'package:codeforces_codechef/colors.dart';
 
 class ProblemInfo {
   int contestId;
@@ -111,7 +108,9 @@ class _ProblemsCFState extends State<ProblemsCF> {
               },
             );
           } else if (snapshot.hasError) {
-            return Text('Error occur');
+            return Center(
+              child: error_to_show,
+            );
           }
           return Center(child: CircularProgressIndicator());
         },
@@ -123,7 +122,7 @@ class _ProblemsCFState extends State<ProblemsCF> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: color1,
+        backgroundColor: color5,
         title: Text("Codeforces Problemset"),
       ),
       drawer: AppDrawer(),
