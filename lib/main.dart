@@ -99,7 +99,10 @@ class MyAppState extends State<Application> {
         return false;
       },
       child: Scaffold(
-        body: _widgetOptions[selected_index],
+        body: IndexedStack(
+          index: selected_index,
+          children: _widgetOptions,
+        ),
         drawer: AppDrawer(),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

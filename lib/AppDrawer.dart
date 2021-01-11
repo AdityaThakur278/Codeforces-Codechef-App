@@ -27,7 +27,7 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
               child: Center(
                 child: Text(
-                  'App Drawer',
+                  'CF/CC Visualizer',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 35.0,
