@@ -109,10 +109,15 @@ class _codeforcesLoginState extends State<codeforcesLogin> {
                 obscureText: false,
                 style: TextStyle(fontFamily: 'Montserrat', fontSize: 20.0),
                 decoration: InputDecoration(
+                  // fillColor: color5,
                   contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                   hintText: "Enter Codeforces Handle",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(32.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(32.0),
+                    borderSide: BorderSide(color: color5, width: 2.0),
                   ),
                 ),
               ),

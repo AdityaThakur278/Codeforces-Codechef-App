@@ -12,7 +12,7 @@ bool nofriend;
 class Info {
   String handle;
   String rank;
-  int rating;
+  String rating;
   String titlePhoto;
 
   Info(this.handle, this.rank, this.rating, this.titlePhoto);
@@ -47,8 +47,8 @@ class _CFfriendsState extends State<CFfriends> {
           for (var mp in json) {
             Info obj = Info(
               mp["handle"],
-              mp["rank"],
-              mp["rating"],
+              mp["rank"] == null ? "Null" : mp["rank"],
+              mp["rating"] == null ? "Null" : mp["rating"].toString(),
               mp["titlePhoto"],
             );
             ls.add(obj);
@@ -111,7 +111,7 @@ class _CFfriendsState extends State<CFfriends> {
                     ),
                     title: Text(snapshot.data[index].handle),
                     subtitle: Text("Rating : " +
-                        snapshot.data[index].rating.toString() +
+                        snapshot.data[index].rating +
                         "  Rank : " +
                         snapshot.data[index].rank),
                     onTap: () {

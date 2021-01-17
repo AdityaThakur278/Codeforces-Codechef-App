@@ -216,7 +216,10 @@ class _UserInfoCCState extends State<UserInfoCC> {
                         elevation: 8.0,
                         // margin: EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
                         child: ListTile(
-                          leading: Icon(Icons.person),
+                          leading: Icon(
+                            Icons.person,
+                            color: color5,
+                          ),
                           title: Text(
                             "ID : " + snapshot.data.username,
                             style: TextStyle(

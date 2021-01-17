@@ -118,6 +118,10 @@ class _CodechefLoginState extends State<CodechefLogin> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(32.0),
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(32.0),
+                    borderSide: BorderSide(color: color5, width: 2.0),
+                  ),
                 ),
               ),
             ),

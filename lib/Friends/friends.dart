@@ -123,6 +123,7 @@ class _FriendsState extends State<Friends> {
           ? Center(child: CircularProgressIndicator())
           : retWidget(),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: color5,
         onPressed: () async {
           String handle = await addFriend(context);
 
