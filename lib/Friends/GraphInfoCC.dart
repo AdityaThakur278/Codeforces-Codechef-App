@@ -33,6 +33,8 @@ class graph1 extends StatefulWidget {
   _graph1State createState() => _graph1State();
 }
 
+bool e1 = false;
+
 class _graph1State extends State<graph1> {
   Future<List<Contest>> graphData;
   int minRating = 5000;
@@ -44,6 +46,7 @@ class _graph1State extends State<graph1> {
   }
 
   Future<List<Contest>> _getUserContestInfo() async {
+    await Future.delayed(Duration(seconds: 3));
     // SharedPreferences prefs = await SharedPreferences.getInstance();
     String handle = widget.handle;
 
@@ -51,6 +54,9 @@ class _graph1State extends State<graph1> {
         'https://competitive-coding-api.herokuapp.com/api/codechef/' + handle);
     try {
       if (response.statusCode == 200) {
+        setState(() {
+          e1 = false;
+        });
         // print("Enter");
         var jsonData = jsonDecode(response.body);
         List<Contest> tempList = new List<Contest>();
@@ -76,6 +82,9 @@ class _graph1State extends State<graph1> {
         throw Exception('Failed to load album');
       }
     } catch (e) {
+      setState(() {
+        e1 = true;
+      });
       print("Exception");
     }
   }
@@ -123,7 +132,28 @@ class _graph1State extends State<graph1> {
                   _generateLineSeries(graphData);
               double yStart = ((minRating - 100) / 100).floorToDouble() * 100;
               double yEnd = (maxRating / 100).ceilToDouble() * 100;
-              if (snapshot.hasData) {
+              if (e1) {
+                return Container(
+                  height: 250.0,
+                  child: Center(
+                    child: Card(
+                      elevation: 8.0,
+                      child: ListTile(
+                        title: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Text(
+                            "Error Occured!!\n Please Re-load/Refresh",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              } else if (snapshot.hasData) {
                 return SfCartesianChart(
                   title: ChartTitle(
                       text: 'User Performance Chart',

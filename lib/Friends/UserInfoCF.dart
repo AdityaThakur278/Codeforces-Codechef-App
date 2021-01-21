@@ -185,17 +185,20 @@ class _UserInfoState extends State<UserInfoCF> {
               future: future,
               builder: (context, snapshot) {
                 if (error2) {
-                  return Center(
-                    child: Card(
-                      elevation: 8.0,
-                      child: ListTile(
-                        title: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            "Error Occured!!\n Please Re-Load/Refresh",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                  return Container(
+                    height: 200.0,
+                    child: Center(
+                      child: Card(
+                        elevation: 8.0,
+                        child: ListTile(
+                          title: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              "Error Occured!!\n Please Re-Load/Refresh",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

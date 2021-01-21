@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'ViewUrlCF.dart';
 import 'package:codeforces_codechef/colors.dart';
+import 'package:codeforces_codechef/main.dart';
 
 class SubmissionInfo {
   int id;
@@ -101,36 +102,47 @@ class _CF_submissionsState extends State<CF_submissions> {
         future: future,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return ListView.builder(
-              physics: BouncingScrollPhysics(),
-              itemCount: snapshot.data.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  elevation: 8.0,
-                  child: ListTile(
-                    title: Text(snapshot.data[index].index +
-                        ". " +
-                        snapshot.data[index].name),
-                    subtitle: Text("Verdict : " +
-                        (snapshot.data[index].verdict ?? "NA") +
-                        "   Rating : " +
-                        (snapshot.data[index].rating.toString() ?? "NA")),
-                    onTap: () {
-                      String url = 'https://codeforces.com/contest/' +
-                          snapshot.data[index].contestId.toString() +
-                          "/submission/" +
-                          snapshot.data[index].id.toString();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ViewUrlCF(url),
-                        ),
-                      );
-                      // webview(url);
-                    },
+            return RefreshIndicator(
+              strokeWidth: 2.5,
+              onRefresh: () async {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyApp(),
                   ),
                 );
               },
+              child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                itemCount: snapshot.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    elevation: 8.0,
+                    child: ListTile(
+                      title: Text(snapshot.data[index].index +
+                          ". " +
+                          snapshot.data[index].name),
+                      subtitle: Text("Verdict : " +
+                          (snapshot.data[index].verdict ?? "NA") +
+                          "   Rating : " +
+                          (snapshot.data[index].rating.toString() ?? "NA")),
+                      onTap: () {
+                        String url = 'https://codeforces.com/contest/' +
+                            snapshot.data[index].contestId.toString() +
+                            "/submission/" +
+                            snapshot.data[index].id.toString();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ViewUrlCF(url),
+                          ),
+                        );
+                        // webview(url);
+                      },
+                    ),
+                  );
+                },
+              ),
             );
           } else if (snapshot.hasError) {
             return Center(

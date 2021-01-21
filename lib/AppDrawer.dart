@@ -71,7 +71,7 @@ class _AppDrawerState extends State<AppDrawer> {
           ), //
           ListTile(
             leading: Icon(Icons.contact_page),
-            title: Text('About Developer'),
+            title: Text('About Developers'),
             onTap: () async {
               Navigator.push(
                   context,

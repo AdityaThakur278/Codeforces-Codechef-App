@@ -14,7 +14,7 @@ class _AboutusState extends State<Aboutus> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: color5,
-        title: Text('About Developer'),
+        title: Text('About Developers'),
         // automaticallyImplyLeading: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -33,8 +33,12 @@ class _AboutusState extends State<Aboutus> {
                 width: 150,
               ),
               CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('images/DP.jpg'),
+                backgroundColor: color5,
+                radius: 52,
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('images/DP.jpg'),
+                ),
               ),
               Text('Aditya Thakur',
                   style: TextStyle(
@@ -51,7 +55,7 @@ class _AboutusState extends State<Aboutus> {
                     Icons.email,
                     color: Colors.white,
                   ),
-                  title: Text('adi27082001@gmail.com',
+                  title: Text('adityathakur2708@gmail.com',
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'Source Sans Pro',
@@ -62,8 +66,12 @@ class _AboutusState extends State<Aboutus> {
                 ),
               ),
               CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('images/sameer.jpeg'),
+                backgroundColor: color5,
+                radius: 52.0,
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('images/sameer.jpeg'),
+                ),
               ),
               Text('Sameer Raturi',
                   style: TextStyle(
@@ -91,8 +99,12 @@ class _AboutusState extends State<Aboutus> {
                 ),
               ),
               CircleAvatar(
-                radius: 50,
-                backgroundImage: AssetImage('images/prof1.jpg'),
+                backgroundColor: color5,
+                radius: 52.0,
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('images/prof1.jpg'),
+                ),
               ),
               Text('Utkarsh Pandya',
                   style: TextStyle(

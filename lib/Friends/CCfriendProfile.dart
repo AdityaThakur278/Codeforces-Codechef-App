@@ -63,13 +63,28 @@ class _CCfriendProfileState extends State<CCfriendProfile> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            UserInfoCC(widget.handle),
-            graph1(widget.handle),
-          ],
+      body: RefreshIndicator(
+        color: color5,
+        strokeWidth: 2.5,
+        onRefresh: () async {
+          error1 = false;
+          e1 = false;
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CCfriendProfile(widget.handle),
+            ),
+          );
+        },
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              UserInfoCC(widget.handle),
+              graph1(widget.handle),
+            ],
+          ),
         ),
       ),
     );

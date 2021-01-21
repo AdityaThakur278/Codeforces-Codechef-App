@@ -62,13 +62,26 @@ class _CFfriendProfileState extends State<CFfriendProfile> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            UserInfoCF(widget.handle),
-            graph(widget.handle),
-          ],
+      body: RefreshIndicator(
+        color: color5,
+        strokeWidth: 2.5,
+        onRefresh: () async {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CFfriendProfile(widget.handle),
+            ),
+          );
+        },
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              UserInfoCF(widget.handle),
+              graph(widget.handle),
+            ],
+          ),
         ),
       ),
     );

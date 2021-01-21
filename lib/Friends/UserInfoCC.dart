@@ -52,13 +52,16 @@ class _UserInfoCCState extends State<UserInfoCC> {
 
   Future<Info> getData() async {
     // SharedPreferences prefs = await SharedPreferences.getInstance();
+    await Future.delayed(Duration(seconds: 1));
     String handle = widget.handle;
     print(handle);
     final response = await http.get(
         'https://competitive-coding-api.herokuapp.com/api/codechef/' + handle);
     try {
       if (response.statusCode == 200) {
-        error1 = false;
+        setState(() {
+          error1 = false;
+        });
         // throw Exception('Failed to load album');
         var json1 = jsonDecode(response.body);
         var json2 = jsonDecode(response.body)['user_details'];
@@ -81,7 +84,9 @@ class _UserInfoCCState extends State<UserInfoCC> {
         throw Exception('Failed to load album');
       }
     } catch (e) {
-      error1 = true;
+      setState(() {
+        error1 = true;
+      });
       print("problem2");
     }
   }
@@ -183,17 +188,20 @@ class _UserInfoCCState extends State<UserInfoCC> {
               future: future,
               builder: (context, snapshot) {
                 if (error1) {
-                  return Center(
-                    child: Card(
-                      elevation: 8.0,
-                      child: ListTile(
-                        title: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            "Error Occured!!\n Please Re-load/Refresh",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                  return Container(
+                    height: 250.0,
+                    child: Center(
+                      child: Card(
+                        elevation: 8.0,
+                        child: ListTile(
+                          title: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              "Error Occured!!\n Please Re-load/Refresh",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

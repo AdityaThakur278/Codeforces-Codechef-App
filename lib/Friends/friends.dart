@@ -162,7 +162,7 @@ class _FriendsState extends State<Friends> {
               valid = false;
               print("Exception");
             }
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) => MyApp(),
@@ -249,7 +249,7 @@ class _FriendsState extends State<Friends> {
               valid = false;
               print("Exception");
             }
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) => MyApp(),

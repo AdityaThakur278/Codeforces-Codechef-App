@@ -1,4 +1,5 @@
 import 'package:codeforces_codechef/AppDrawer.dart';
+import 'package:codeforces_codechef/main.dart';
 import 'package:codeforces_codechef/profile/GraphInfoCF.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
@@ -127,16 +128,35 @@ class _CodechefDataState extends State<CodechefData> {
   //   );
   // }
 
+  Widget retwid() {
+    return Column(
+      children: [
+        UserInfoCC(),
+        graph1(),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            UserInfoCC(),
-            graph1(),
-          ],
+      body: RefreshIndicator(
+        color: color5,
+        strokeWidth: 2.5,
+        onRefresh: () async {
+          error1 = false;
+          e1 = false;
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MyApp(),
+            ),
+          );
+        },
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: retwid(),
         ),
       ),
       drawer: AppDrawer(),

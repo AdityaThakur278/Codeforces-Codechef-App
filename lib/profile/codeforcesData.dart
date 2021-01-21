@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:codeforces_codechef/profile/UserInfoCF.dart';
 import 'GraphInfoCF.dart';
 import 'package:codeforces_codechef/colors.dart';
+import 'package:codeforces_codechef/main.dart';
 
 class UserInfo {
   String handle;
@@ -134,13 +135,26 @@ class _CodeforcesDataState extends State<CodeforcesData> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            UserInfoCF(),
-            graph(),
-          ],
+      body: RefreshIndicator(
+        color: color5,
+        strokeWidth: 2.5,
+        onRefresh: () async {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MyApp(),
+            ),
+          );
+        },
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              UserInfoCF(),
+              graph(),
+            ],
+          ),
         ),
       ),
       drawer: AppDrawer(),

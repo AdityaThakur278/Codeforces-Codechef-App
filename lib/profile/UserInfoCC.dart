@@ -39,54 +39,6 @@ class Info {
   );
 }
 
-Future<Info> getData() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  String handle = prefs.getString('codechef_handle');
-  print(handle);
-  final response = await http.get(
-      'https://competitive-coding-api.herokuapp.com/api/codechef/' + handle);
-  try {
-    if (response.statusCode == 200) {
-      error1 = false;
-      // throw Exception('Failed to load album');
-      var json1 = jsonDecode(response.body);
-      var json2 = jsonDecode(response.body)['user_details'];
-      // print(json2['username']);
-      // print(json2['name']);
-      // print(json1['rating']);
-      // print(json1['stars'].toString());
-      // print(json1['highest_rating'].toString());
-      // print(json1['global_rank']);
-      // print(json1['country_rank']);
-      // print(json2['country']);
-      // print(json2['state']);
-      // print(json2['city']);
-      // print(json2['student/professional']);
-      // print(json2['institution']);
-      return (Info(
-        json2['username'], //
-        json2['name'], //
-        json1['rating'],
-        json1['stars'] == null ? "Null" : json1['stars'], //
-        json1['highest_rating'].toString(), //
-        json1['global_rank'].toString(), //
-        json1['country_rank'].toString(), //
-        json2['country'],
-        json2['state'],
-        json2['city'],
-        json2['student/professional'],
-        json2['institution'],
-      ));
-    } else {
-      print("problem1");
-      throw Exception('Failed to load album');
-    }
-  } catch (e) {
-    error1 = true;
-    print("problem2");
-  }
-}
-
 class UserInfoCC extends StatefulWidget {
   @override
   _UserInfoCCState createState() => _UserInfoCCState();
@@ -94,6 +46,62 @@ class UserInfoCC extends StatefulWidget {
 
 class _UserInfoCCState extends State<UserInfoCC> {
   Future<Info> future;
+  Future<Info> getData() async {
+    await Future.delayed(Duration(seconds: 1));
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String handle = prefs.getString('codechef_handle');
+    print(handle);
+    final response = await http.get(
+        'https://competitive-coding-api.herokuapp.com/api/codechef/' + handle);
+
+    try {
+      if (response.statusCode == 200) {
+        setState(() {
+          error1 = false;
+        });
+
+        // throw Exception('Failed to load album');
+        var json1 = jsonDecode(response.body);
+        var json2 = jsonDecode(response.body)['user_details'];
+        // print(json2['username']);
+        // print(json2['name']);
+        // print(json1['rating']);
+        // print(json1['stars'].toString());
+        // print(json1['highest_rating'].toString());
+        // print(json1['global_rank']);
+        // print(json1['country_rank']);
+        // print(json2['country']);
+        // print(json2['state']);
+        // print(json2['city']);
+        // print(json2['student/professional']);
+        // print(json2['institution']);
+        return (Info(
+          json2['username'], //
+          json2['name'], //
+          json1['rating'],
+          json1['stars'] == null ? "Null" : json1['stars'], //
+          json1['highest_rating'].toString(), //
+          json1['global_rank'].toString(), //
+          json1['country_rank'].toString(), //
+          json2['country'],
+          json2['state'],
+          json2['city'],
+          json2['student/professional'],
+          json2['institution'],
+        ));
+      } else {
+        print("problem1");
+        throw Exception('Failed to load album');
+      }
+    } catch (e) {
+      setState(() {
+        error1 = true;
+      });
+
+      print("problem2");
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -191,17 +199,20 @@ class _UserInfoCCState extends State<UserInfoCC> {
               future: future,
               builder: (context, snapshot) {
                 if (error1) {
-                  return Center(
-                    child: Card(
-                      elevation: 8.0,
-                      child: ListTile(
-                        title: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            "Error Occured!!\n Please Re-Login/Refresh",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                  return Container(
+                    height: 250.0,
+                    child: Center(
+                      child: Card(
+                        elevation: 8.0,
+                        child: ListTile(
+                          title: Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              "Error Occured!!\n Please Re-Login/Refresh",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
