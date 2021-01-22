@@ -103,6 +103,7 @@ class _CF_submissionsState extends State<CF_submissions> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return RefreshIndicator(
+              color: color5,
               strokeWidth: 2.5,
               onRefresh: () async {
                 Navigator.pushReplacement(

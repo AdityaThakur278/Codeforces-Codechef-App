@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as https;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:codeforces_codechef/colors.dart';
+import 'package:codeforces_codechef/main.dart';
 
 String formatDuration(Duration d) {
   var seconds = d.inSeconds;
@@ -165,68 +166,83 @@ class _UpcomingState extends State<Upcoming> {
       drawer: AppDrawer(),
       body: error3 == true
           ? Center(child: error_to_show)
-          : Center(
-              child: FutureBuilder<List<Sites>>(
-                future: futureSites,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                      itemCount: snapshot.data.length,
-                      physics: BouncingScrollPhysics(),
-                      itemBuilder: (BuildContext context, int index) {
-                        return Card(
-                          elevation: 8,
-                          child: ListTile(
-                            leading: contestimage(snapshot.data[index].site),
-                            title: Text(snapshot.data[index].name),
-                            subtitle: Row(
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Platform"),
-                                    Text("Date"),
-                                    Text("Start Time"),
-                                    Text("Duration"),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("  -  "),
-                                    Text("  -  "),
-                                    Text("  -  "),
-                                    Text("  -  "),
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(snapshot.data[index].site),
-                                    Text(snapshot.data[index].start_time
-                                        .toString()
-                                        .substring(0, 10)),
-                                    Text(snapshot.data[index].start_time
-                                        .toString()
-                                        .substring(12, 19)),
-                                    Text(snapshot.data[index].duration),
-                                  ],
-                                )
-                              ],
+          : RefreshIndicator(
+              color: color5,
+              strokeWidth: 2.5,
+              onRefresh: () async {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyApp(),
+                  ),
+                );
+              },
+              child: Center(
+                child: FutureBuilder<List<Sites>>(
+                  future: futureSites,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
+                        itemCount: snapshot.data.length,
+                        physics: BouncingScrollPhysics(),
+                        itemBuilder: (BuildContext context, int index) {
+                          return Card(
+                            elevation: 8,
+                            child: ListTile(
+                              leading: contestimage(snapshot.data[index].site),
+                              title: Text(snapshot.data[index].name),
+                              subtitle: Row(
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text("Platform"),
+                                      Text("Date"),
+                                      Text("Start Time"),
+                                      Text("Duration"),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text("  -  "),
+                                      Text("  -  "),
+                                      Text("  -  "),
+                                      Text("  -  "),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(snapshot.data[index].site),
+                                      Text(snapshot.data[index].start_time
+                                          .toString()
+                                          .substring(0, 10)),
+                                      Text(snapshot.data[index].start_time
+                                          .toString()
+                                          .substring(12, 19)),
+                                      Text(snapshot.data[index].duration),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              onTap: () {
+                                _launchURL(snapshot.data[index].url);
+                              },
                             ),
-                            onTap: () {
-                              _launchURL(snapshot.data[index].url);
-                            },
-                          ),
-                        );
-                      },
-                    );
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
-                  // By default, show a loading spinner.
-                  return CircularProgressIndicator();
-                },
+                          );
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text("${snapshot.error}");
+                    }
+                    // By default, show a loading spinner.
+                    return CircularProgressIndicator();
+                  },
+                ),
               ),
             ),
     );

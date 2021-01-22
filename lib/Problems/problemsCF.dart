@@ -6,6 +6,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'ViewUrlCf.dart';
 import 'package:codeforces_codechef/colors.dart';
+import 'package:codeforces_codechef/main.dart';
 
 class ProblemInfo {
   int contestId;
@@ -71,49 +72,61 @@ class _ProblemsCFState extends State<ProblemsCF> {
   }
 
   Widget retWidget() {
-    return Center(
-      child: FutureBuilder<List<ProblemInfo>>(
-        future: future,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              physics: BouncingScrollPhysics(),
-              itemCount: snapshot.data.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  elevation: 8.0,
-                  child: ListTile(
-                    title: Text(snapshot.data[index].index +
-                        ". " +
-                        snapshot.data[index].name),
-                    subtitle: Text("Rating : " +
-                        (snapshot.data[index].rating.toString() ?? "NA") +
-                        "     Solved-by : " +
-                        snapshot.data[index].solvedCount.toString()),
-                    onTap: () {
-                      String url =
-                          "https://codeforces.com/problemset/problem/" +
-                              snapshot.data[index].contestId.toString() +
-                              "/" +
-                              snapshot.data[index].index;
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ViewUrlCf(url),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: error_to_show,
-            );
-          }
-          return Center(child: CircularProgressIndicator());
-        },
+    return RefreshIndicator(
+      color: color5,
+      strokeWidth: 2.5,
+      onRefresh: () async {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MyApp(),
+          ),
+        );
+      },
+      child: Center(
+        child: FutureBuilder<List<ProblemInfo>>(
+          future: future,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                physics: BouncingScrollPhysics(),
+                itemCount: snapshot.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    elevation: 8.0,
+                    child: ListTile(
+                      title: Text(snapshot.data[index].index +
+                          ". " +
+                          snapshot.data[index].name),
+                      subtitle: Text("Rating : " +
+                          (snapshot.data[index].rating.toString() ?? "NA") +
+                          "     Solved-by : " +
+                          snapshot.data[index].solvedCount.toString()),
+                      onTap: () {
+                        String url =
+                            "https://codeforces.com/problemset/problem/" +
+                                snapshot.data[index].contestId.toString() +
+                                "/" +
+                                snapshot.data[index].index;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ViewUrlCf(url),
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: error_to_show,
+              );
+            }
+            return Center(child: CircularProgressIndicator());
+          },
+        ),
       ),
     );
   }

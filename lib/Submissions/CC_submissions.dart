@@ -125,6 +125,7 @@ class _CC_submissionsState extends State<CC_submissions> {
             );
           } else if (snapshot.hasData) {
             return RefreshIndicator(
+              color: color5,
               strokeWidth: 2.5,
               onRefresh: () async {
                 Navigator.pushReplacement(
