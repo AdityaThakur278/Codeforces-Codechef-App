@@ -231,8 +231,8 @@ class _UserInfoState extends State<UserInfoCF> {
                             backgroundColor: color5,
                             radius: 100.0,
                             child: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  'https:' + snapshot.data.titlePhoto),
+                              backgroundImage:
+                                  NetworkImage(snapshot.data.titlePhoto),
                               radius: 98.0,
                             ),
                           ),
@@ -253,7 +253,7 @@ class _UserInfoState extends State<UserInfoCF> {
                     ],
                   );
                 } else if (snapshot.hasError) {
-                  return Center(child: error_to_show);
+                  return Center(child: error_to_show(context));
                 }
                 // return CircularProgressIndicator();
                 return Center(

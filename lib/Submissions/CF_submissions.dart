@@ -147,7 +147,7 @@ class _CF_submissionsState extends State<CF_submissions> {
             );
           } else if (snapshot.hasError) {
             return Center(
-              child: error_to_show,
+              child: error_to_show(context),
             );
           }
           return Center(child: CircularProgressIndicator());

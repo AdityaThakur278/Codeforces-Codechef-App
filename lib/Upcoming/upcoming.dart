@@ -49,7 +49,6 @@ class Sites {
     this.url,
     this.start_time,
     this.end_time,
-    // var duration,
     this.duration,
     this.site,
     this.in_24_hours,
@@ -82,16 +81,26 @@ class _UpcomingState extends State<Upcoming> {
             in_24_hours: x['in_24_hours'],
             status: x['status'],
           );
+
+          // Format duration in HH:MM:SS
           double y = double.parse(contest.duration);
           int z = y.toInt();
           Duration xd = new Duration(seconds: z);
           contest.duration = formatDuration(xd);
 
+          // Adding 5hrs and 30mins in start_time and end_time
+          contest.start_time = contest.start_time.add(new Duration(hours: 5));
+          contest.start_time =
+              contest.start_time.add(new Duration(minutes: 30));
+          contest.end_time = contest.end_time.add(new Duration(hours: 5));
+          contest.end_time = contest.end_time.add(new Duration(minutes: 30));
+
           DateTime now = DateTime.now();
           DateTime d1 = contest.start_time;
 
-          if (contest.status == 'BEFORE' && d1.compareTo(now) > 0)
+          if (contest.status == 'BEFORE' && d1.compareTo(now) > 0) {
             contests.add(contest);
+          }
         }
         return contests;
       } else {
@@ -165,7 +174,7 @@ class _UpcomingState extends State<Upcoming> {
       ),
       drawer: AppDrawer(),
       body: error3 == true
-          ? Center(child: error_to_show)
+          ? Center(child: error_to_show(context))
           : RefreshIndicator(
               color: color5,
               strokeWidth: 2.5,
@@ -222,8 +231,9 @@ class _UpcomingState extends State<Upcoming> {
                                           .toString()
                                           .substring(0, 10)),
                                       Text(snapshot.data[index].start_time
-                                          .toString()
-                                          .substring(12, 19)),
+                                              .toString()
+                                              .substring(11, 19) +
+                                          "  UTC+5.5"),
                                       Text(snapshot.data[index].duration),
                                     ],
                                   )

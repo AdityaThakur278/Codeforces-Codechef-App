@@ -1,4 +1,5 @@
 import 'package:codeforces_codechef/error.dart';
+import 'package:codeforces_codechef/error1.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -270,7 +271,7 @@ class _UserInfoCCState extends State<UserInfoCC> {
                     ],
                   );
                 } else if (snapshot.hasError) {
-                  return Center(child: error_to_show);
+                  return Center(child: error_to_show1);
                 }
                 return Center(
                   child: Card(

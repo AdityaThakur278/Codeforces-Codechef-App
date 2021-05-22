@@ -256,7 +256,7 @@ class _UserInfoCCState extends State<UserInfoCC> {
                     ],
                   );
                 } else if (snapshot.hasError) {
-                  return Center(child: error_to_show);
+                  return Center(child: error_to_show(context));
                 }
                 return Center(
                   child: Card(

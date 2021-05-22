@@ -1,19 +1,40 @@
 import 'package:flutter/material.dart';
+import 'colors.dart';
+import 'main.dart';
+import 'package:codeforces_codechef/Upcoming/upcoming.dart';
 
-Widget error_to_show = Center(
-  child: Card(
-    elevation: 8.0,
-    child: ListTile(
-      title: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Text(
-          "Some Error Occured!!\n Please Re-load/Refresh",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+Widget error_to_show(context) {
+  error3 = false;
+  return RefreshIndicator(
+    color: color5,
+    strokeWidth: 2.5,
+    onRefresh: () async {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MyApp(),
         ),
-      ),
+      );
+    },
+    // "Some Error Occured!! \nPlease Reload/Refresh"
+    child: ListView.builder(
+      itemBuilder: (context, index) {
+        return Column(
+          children: [
+            SizedBox(
+              height: 50,
+            ),
+            ListTile(
+              title: Text(
+                'Some Error Occured!! \nPlease Reload/Refresh',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20.0),
+              ),
+            ),
+          ],
+        );
+      },
+      itemCount: 1,
     ),
-  ),
-);
+  );
+}

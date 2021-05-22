@@ -11,6 +11,7 @@ import 'dart:convert';
 
 bool circularIndicator = false;
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
 void check1() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var handle = prefs.getString('codeforces_handle');

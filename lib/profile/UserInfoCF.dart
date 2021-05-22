@@ -1,4 +1,5 @@
 import 'package:codeforces_codechef/error.dart';
+import 'package:codeforces_codechef/error1.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -166,7 +167,7 @@ class _UserInfoState extends State<UserInfoCF> {
               ),
             );
           } else if (snapshot.hasError) {
-            return Center(child: error_to_show);
+            return error_to_show1;
           }
           return CircularProgressIndicator();
         });
@@ -231,8 +232,8 @@ class _UserInfoState extends State<UserInfoCF> {
                             backgroundColor: color5,
                             radius: 100.0,
                             child: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  'https:' + snapshot.data.titlePhoto),
+                              backgroundImage:
+                                  NetworkImage(snapshot.data.titlePhoto),
                               radius: 98.0,
                             ),
                           ),
@@ -253,7 +254,7 @@ class _UserInfoState extends State<UserInfoCF> {
                     ],
                   );
                 } else if (snapshot.hasError) {
-                  return Center(child: error_to_show);
+                  return error_to_show1;
                 }
                 return Center(
                   child: Card(

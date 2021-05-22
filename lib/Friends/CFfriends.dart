@@ -105,8 +105,8 @@ class _CFfriendsState extends State<CFfriends> {
                       radius: 27.0,
                       child: CircleAvatar(
                         radius: 25.0,
-                        backgroundImage: NetworkImage(
-                            "https:" + snapshot.data[index].titlePhoto),
+                        backgroundImage:
+                            NetworkImage(snapshot.data[index].titlePhoto),
                       ),
                     ),
                     title: Text(snapshot.data[index].handle),
@@ -128,7 +128,7 @@ class _CFfriendsState extends State<CFfriends> {
             );
           } else if (snapshot.hasError) {
             return Center(
-              child: error_to_show,
+              child: error_to_show(context),
             );
           }
           return Center(child: CircularProgressIndicator());

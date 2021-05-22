@@ -112,7 +112,7 @@ class _CC_submissionsState extends State<CC_submissions> {
                     title: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Text(
-                        "Error Occured!!\n Please Re-load/Refresh",
+                        "Error Occured!!\n Click on the Codechef Icon",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -168,7 +168,7 @@ class _CC_submissionsState extends State<CC_submissions> {
             );
           } else if (snapshot.hasError) {
             return Center(
-              child: error_to_show,
+              child: error_to_show(context),
             );
           }
           return Center(

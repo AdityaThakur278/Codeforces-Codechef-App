@@ -82,7 +82,7 @@ class _CCfriendsState extends State<CCfriends> {
             );
           } else if (snapshot.hasError) {
             return Center(
-              child: error_to_show,
+              child: error_to_show(context),
             );
           }
           return Center(child: CircularProgressIndicator());
